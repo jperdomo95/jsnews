@@ -30,6 +30,7 @@ export const DetailText = styled.p`
   font-size: 11px;
   color: #767676;
   margin-left: 8px;
+  font-weight: 400;
 `
 export const DetailContainer = styled.div`
   display: flex;
