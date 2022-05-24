@@ -4,6 +4,7 @@ export const Section = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px 40px;
+  margin-bottom: 96px;
 `
 export const Article = styled.article`
   height: 90px;

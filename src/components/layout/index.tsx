@@ -1,4 +1,5 @@
 import Header from './Header'
+import Footer from './Footer'
 import { StyledBody } from './styled'
 
 interface Props {
@@ -12,6 +13,7 @@ const Layout = ({ children }: Props) => {
     <StyledBody>
       {children}
     </StyledBody>
+    <Footer />
     </>
   )
 }
