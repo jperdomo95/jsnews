@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
   max-height: 114px;
   position: fixed;
   top: 0;
+  z-index: 20;
 `
 export const StyledBody = styled.main`
   margin-top: 184px;

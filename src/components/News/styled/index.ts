@@ -79,3 +79,68 @@ export const NewsTabDefault = styled.button`
   font-size: 16px;
   cursor: pointer;
 `
+export const DropdownContainer = styled.div`
+  height: 32px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: #2e2e2e 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 240px;
+  z-index: 10;
+`
+export const DropdownText = styled.p`
+  font-size: 14px;
+  padding: 0 12px;
+  color: #343434;
+  display: flex;
+  align-items: center;
+`
+export const DropdownList = styled.ul`
+  position: absolute;
+  top: 34px;
+  box-shadow: 0 2px 2px 0 #dad8d8;
+  background-color: #ffffff;
+  width: 100%;
+`
+export const DropdownListItem = styled.li`
+  display: flex;
+  height: 46px;
+  align-items: center;
+  padding: 0 10px;
+  color: #343434;
+  &:hover {
+    background-color: #eaeaea;
+  }
+`
+export const DropdownBackdrop  = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: transparent;
+  z-index: 0;
+`
+export const DropdownListItemText = styled.div`
+  font-size: 14px;
+  color: #343434;
+`
+export const DropdownImage = styled.img`
+  margin-right: 13px;
+`
+export const DropdownCaret = styled.span`
+  margin-right: 13px;
+  transition: .35s;
+  transform: rotate(90deg);
+  &:hover {
+    transform: rotate(270deg);
+  }
+`
+export const ActionsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 38px;
+`
