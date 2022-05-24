@@ -17,3 +17,30 @@ export const StyledBody = styled.main`
 export const Image = styled.img`
   height: 28px;
 `
+
+export const PaginatorContainer = styled.div`
+  display: flex;
+  grid-column-gap: 8px;
+  justify-content: center;
+  margin-bottom: 98px;
+`
+
+export const PaginatorItem = styled.button`
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: solid 1px #979797;
+  font-size: 14px;
+  color: rgba(0, 0, 0, .65);
+`
+
+export const PaginatorItemActive = styled.button`
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1890ff;
+  color: #fff;
+  font-size: 14px;
+`
