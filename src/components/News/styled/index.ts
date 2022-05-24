@@ -48,3 +48,33 @@ export const Image = styled.img`
   width: 24px;
   height: 22px;
 `
+
+export const NewsListHeader = styled.header`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 63px;
+`
+
+export const NewsTabActive = styled.button`
+  min-width: 98px;
+  min-height: 31px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border: solid 1px #1797ff;
+  background-color: #fcfcfc;
+  color: #1797ff;
+  font-size: 16px;
+  cursor: pointer;
+`
+
+export const NewsTabDefault = styled.button`
+  min-width: 98px;
+  min-height: 31px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border: solid 1px #d6d6d6;
+  background-color: #fcfcfc;
+  color: #606060;
+  font-size: 16px;
+  cursor: pointer;
+`
