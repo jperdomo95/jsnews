@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Hit as HitInterface } from "../../interfaces/News"
+import { Hit as HitInterface } from "@interfaces/News"
 import {
   Article as StyledArticle,
   ArticleDetail,
@@ -23,8 +23,36 @@ const Article = ({ article }: Props) => {
   const wasCreated = moment().diff(article.created_at, 'hour')
   const detail = `${wasCreated} hours ago by ${article.author}`
 
+  const handleOpenArticle = () => {
+    if (article.story_url)
+      window.open(article.story_url, '_blank');
+  }
+
+  const handleLikeArticle = (e: any) => {
+    e.stopPropagation();
+    const likedArticles: HitInterface[] = JSON.parse(localStorage.getItem('likedNews') || '[]')
+    const wasLiked = !!likedArticles.find(({ objectID }) => objectID === article.objectID)
+    if (wasLiked) {
+      const removedLiked = likedArticles.filter(({ objectID }) => objectID !== article.objectID)
+      console.log(removedLiked)
+      localStorage.setItem('likedNews',JSON.stringify(removedLiked))
+    } else {
+      likedArticles.push({...article, liked: true})
+      localStorage.setItem('likedNews',JSON.stringify(likedArticles))
+    }
+    setLiked(!liked)
+    // if (hasFavorites) {
+    //   const favorites = JSON.parse(hasFavorites)
+    //   const favoriteExist = favorites.find((favorite: any) => article.objectID === favorite.objectID)
+    //   if (!favoriteExist)
+    //     localStorage.setItem('favorites', JSON.stringify([ ...favorites, article ]))
+    // } else {
+    //   localStorage.setItem('favorites', JSON.stringify(article))
+    // }
+  }
+
   return (
-    <StyledArticle>
+    <StyledArticle onClick={handleOpenArticle}>
       <ArticleDetail>
         <DetailContainer>
           <ClockIcon />
@@ -32,10 +60,9 @@ const Article = ({ article }: Props) => {
         </DetailContainer>
         <TitleText>{article.story_title}</TitleText>
       </ArticleDetail>
-      <ArticleButton>
+      <ArticleButton onClick={(e) => { handleLikeArticle(e) }}>
          <Image
-          src={liked ? Likedheart : Heart} alt="liked"
-          onClick={() => setLiked(!liked)}
+          src={article.liked || liked ? Likedheart : Heart} alt="liked"
         />
       </ArticleButton>
     </StyledArticle>

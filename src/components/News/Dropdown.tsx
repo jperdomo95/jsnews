@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   DropdownContainer,
   DropdownText,
@@ -11,11 +11,17 @@ import {
 } from './styled'
 import { dropdownItems } from './dropdownItems'
 
-const Dropdown = () => {
+interface Props {
+  onChange: (value: string)=>void;
+  selected: string;
+}
+
+const Dropdown = ({ onChange, selected }: Props) => {
   const [open, setOpen] = useState(false)
   const handleClick = (item: any) => {
     if (item) {
       setSelectedItem(item)
+      onChange(item.value)
     }
     setOpen(!open)
   }
@@ -23,8 +29,17 @@ const Dropdown = () => {
   const [selectedItem, setSelectedItem] = useState({
     label: 'Select your news',
     image: ''
+  })
+
+  const setItemFromLocalStorage = () => {
+    const selectedQuery = dropdownItems.find(({ value }) => value === selected)
+    setSelectedItem(selectedQuery || { label: 'Select your news', image: '' })
   }
-  )
+
+  useEffect(() => {
+    setItemFromLocalStorage()
+  }, [selected])
+
   return (
     <>
     <DropdownContainer onClick={() => handleClick('')}>

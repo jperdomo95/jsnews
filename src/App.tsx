@@ -1,5 +1,5 @@
 import Layout from './components/layout'
-import Index from './components/News/Index'
+import News from './components/News'
 import './App.css'
 import { LoadingProvider } from './context/LoadingContext';
 
@@ -7,7 +7,7 @@ const App = () => {
   return (
     <LoadingProvider>
       <Layout>
-        <Index />
+        <News />
       </Layout>
     </LoadingProvider>
   );

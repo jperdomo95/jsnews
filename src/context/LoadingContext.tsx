@@ -2,22 +2,30 @@ import { createContext, useState } from 'react'
 
 export interface LoadingContextProps {
     isLoading: boolean;
-    toggleLoading: () => void;
+    showLoading: () => void;
+    hideLoading: () => void;
 }
 
 export const LoadingContext = createContext( {} as LoadingContextProps )
 
 export const LoadingProvider = ({ children }: any ) => {
   const [isLoading, setIsLoading] = useState(true)
-  const toggleLoading = () => {
-    setIsLoading(!isLoading)
+  
+  const showLoading = () => {
+    setIsLoading(true)
   }
-    return (
-        <LoadingContext.Provider value={{
-          isLoading,
-          toggleLoading,
-        }}>
-            { children }
-        </LoadingContext.Provider>
-    )
+
+  const hideLoading = () => {
+    setIsLoading(false)
+  }
+
+  return (
+    <LoadingContext.Provider value={{
+      isLoading,
+      showLoading,
+      hideLoading,
+    }}>
+      { children }
+    </LoadingContext.Provider>
+  )
 }

@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
 import Header from './Header'
 import Loading from './Loading'
-import Footer from './Footer'
 import { StyledBody, LoadingSpinner, } from './styled'
 import { LoadingContext } from '../../context/LoadingContext';
 interface Props {
@@ -10,16 +9,15 @@ interface Props {
 
 
 const Layout = ({ children }: Props) => {
-  const { isLoading, toggleLoading } = useContext(LoadingContext)
+  const { isLoading } = useContext(LoadingContext)
 
   return (
     <>
     <Header />
-    <Loading open={isLoading} toggleLoading={toggleLoading}><LoadingSpinner /></Loading>
+    <Loading open={isLoading}><LoadingSpinner /></Loading>
     <StyledBody>
       {children}
     </StyledBody>
-    <Footer />
     </>
   )
 }

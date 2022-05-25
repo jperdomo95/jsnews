@@ -15,6 +15,7 @@ export const Article = styled.article`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 `
 export const ArticleDetail = styled.div`
   background: #fff;

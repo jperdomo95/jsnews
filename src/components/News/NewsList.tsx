@@ -1,27 +1,19 @@
-import { useState } from "react"
-import { newsMock } from '../../mocks/news'
 import { Hit as HitInterface } from '@interfaces/News'
-import { Section, ActionsContainer } from './styled'
+import { Section } from './styled'
 import Article from './Article'
-import Header from './Header'
-import Dropdown from "./Dropdown"
 
-const NewsList = () => {
-  const [news, setNews] = useState<HitInterface[]>(newsMock.hits);
+interface Props {
+  news: HitInterface[];
+}
+
+const NewsList = ({ news }: Props) => {
   
   return (
-    <>
-    <Header />
-    <ActionsContainer>
-      <Dropdown />
-      <Dropdown />
-    </ActionsContainer>
     <Section>
       {news.map((article: HitInterface, i: number) => (
         <Article article={article} key={i} />
       ))}
     </Section>
-    </>
   );
 }
 

@@ -27,6 +27,7 @@ export interface Hit {
   created_at_i:     number;
   _tags:            string[];
   objectID:         string;
+  liked?:           boolean;
 }
 
 export interface HighlightResult {
@@ -46,4 +47,5 @@ export enum Query {
   Reactjs = "reactjs",
   Angular = "angular",
   Vuejs = "vuejs",
+  default = '',
 }
