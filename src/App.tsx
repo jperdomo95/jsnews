@@ -1,12 +1,15 @@
 import Layout from './components/layout'
-import NewsList from './components/News/NewsList';
+import Index from './components/News/Index'
 import './App.css'
+import { LoadingProvider } from './context/LoadingContext';
 
 const App = () => {
   return (
-    <Layout>
-      <NewsList />
-    </Layout>
+    <LoadingProvider>
+      <Layout>
+        <Index />
+      </Layout>
+    </LoadingProvider>
   );
 }
 
