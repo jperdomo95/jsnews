@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const newsDB = axios.create({
-  baseURL: 'https://hn.algolia.com/api/v1'
+  baseURL: process.env.REACT_APP_API_URL
 })
 
 export default newsDB

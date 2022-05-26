@@ -21,16 +21,17 @@ const Footer = ({ onPaginate, pagesNumber }: Props) => {
   const [pages, setPages] = useState<number[]>(paginatorItems)
 
   const handleClick = (selectedPage: number, index: number) => {
-    //alert(i)
     const midleIndex = Math.trunc(pages.length / 2)
     const sumToItems = selectedPage - pages[midleIndex]
 
     onPaginate(selectedPage - 1)
     
-    if ((selectedPage - pages[midleIndex]) < 1) {
+    if ((selectedPage - pages[midleIndex]) < 1 && selectedPage > pages[midleIndex]) {
       setPages(paginatorItems)
-    } else if (pages.find(page => page === (pagesNumber - Math.floor(pages.length / 2))) ){
+    } else if (pages.find(page => page === 1) && selectedPage < pages[midleIndex]){
       setPages(pages)
+    } else if (pages.find(page => page === pagesNumber && selectedPage > pages[midleIndex] )) {
+      setPages(pages.map((_, i) => pagesNumber - pages.length + i + 1))
     } else {
       setPages(pages.map(page => page + sumToItems))
     }
@@ -40,7 +41,7 @@ const Footer = ({ onPaginate, pagesNumber }: Props) => {
   useEffect(() => {
     const newIndex = pages.findIndex(page => page === currentPage)
     setActiveIndex(newIndex)
-  }, [pages])
+  }, [pages, currentPage])
 
   return (
     <PaginatorContainer>
