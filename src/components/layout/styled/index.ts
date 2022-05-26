@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
+interface PaginatorItemProps {
+  readonly isActive: boolean;
+}
+
 export const StyledHeader = styled.header`
   width: 100%;
   margin: 0 0 70px;
@@ -10,10 +14,18 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   z-index: 20;
+  @media only screen and (max-width: 576px) {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
 `
 export const StyledBody = styled.main`
   margin-top: 184px;
   padding: 0 150px;
+  @media only screen and (max-width: 992px) {
+    padding: 0 20px;
+  }
 `
 export const Image = styled.img`
   height: 28px;
@@ -26,26 +38,17 @@ export const PaginatorContainer = styled.div`
   margin-bottom: 98px;
 `
 
-export const PaginatorItem = styled.button`
+export const PaginatorItem = styled.button<PaginatorItemProps>`
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: ${({ isActive, theme: { colors } }) =>
+    isActive ? colors.primary : colors.white};
   border: solid 1px #979797;
   font-size: 14px;
-  color: rgba(0, 0, 0, .65);
+  color: ${({ isActive, theme: { colors } }) =>
+    isActive ? colors.white : colors.secondary};
 `
-
-export const PaginatorItemActive = styled.button`
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  border: none;
-  background-color: #1890ff;
-  color: #fff;
-  font-size: 14px;
-`
-
 export const LoadingContainer = styled.div`
   position: fixed;
   z-index: 30;

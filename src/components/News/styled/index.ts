@@ -5,6 +5,14 @@ export const Section = styled.section`
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px 40px;
   margin-bottom: 96px;
+  @media only screen and (max-width: 576px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+    margin-bottom: 38px;
+  }
+  @media only screen and (max-width: 762px) {
+    grid-gap: 10px 10px;
+  }
 `
 export const Article = styled.article`
   height: 90px;
@@ -26,7 +34,7 @@ export const ArticleButton = styled.button`
   height: 100%;
   border: none;
   border-radius: inherit;
-  width: 68px;
+  min-width: 68px;
 `
 export const DetailText = styled.p`
   font-size: 11px;
