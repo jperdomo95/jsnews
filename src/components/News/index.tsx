@@ -1,7 +1,7 @@
 import NewsList from "./NewsList"
-import Header from './Header'
+import Nav from './Nav'
 import Dropdown from "./Dropdown"
-import Footer from '@components/layout/Footer'
+import Paginator from '@components/layout/Paginator'
 import { ActionsContainer } from './styled'
 import { useNews } from "@hooks/useNews"
 
@@ -17,12 +17,12 @@ const News = () => {
 
   return (
     <>
-      <Header />
+      <Nav />
       <ActionsContainer>
         <Dropdown onChange={handleDropdown} selected={query}/>
       </ActionsContainer>
       <NewsList news={news.hits} />
-      <Footer onPaginate={handlePaginator} pagesNumber={news.nbPages}/>
+      <Paginator onPaginate={handlePaginator} pagesNumber={news.nbPages}/>
     </>
   )
 }

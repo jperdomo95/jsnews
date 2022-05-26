@@ -9,7 +9,7 @@ export interface LoadingContextProps {
 export const LoadingContext = createContext( {} as LoadingContextProps )
 
 export const LoadingProvider = ({ children }: any ) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   
   const showLoading = () => {
     setIsLoading(true)

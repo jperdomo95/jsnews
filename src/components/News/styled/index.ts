@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Section = styled.section`
@@ -24,6 +25,11 @@ export const Article = styled.article`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  opacity: .7;
+  transition: .4s;
+  &:hover{
+    opacity: 1;
+  }
 `
 export const ArticleDetail = styled.div`
   background: #fff;
@@ -53,31 +59,44 @@ export const TitleText = styled.p`
   line-height: 20px;
   letter-spacing: .25;
   font-weight: 500;
+  overflow-wrap: anywhere;
 `
 export const Image = styled.img`
   width: 24px;
   height: 22px;
+  transition: .3s;
+  &:hover{
+    transform: scale(1.25);
+  }
 `
-
-export const NewsListHeader = styled.header`
+export const NewsListNav = styled.nav`
   display: flex;
   justify-content: center;
   margin-bottom: 63px;
 `
-
-export const NewsTabActive = styled.button`
+interface NewsTabActiveProps {
+  readonly current: string | boolean;
+}
+export const NewsTab = styled(Link)<NewsTabActiveProps>`
   min-width: 98px;
   min-height: 31px;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
-  border: solid 1px #1797ff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${({current, theme: { colors }}) =>
+    current ? colors.primary : colors.secondary};
   background-color: #fcfcfc;
-  color: #1797ff;
+  color: ${({current, theme: { colors }}) =>
+    current ? colors.primary : colors.secondary};;
   font-size: 16px;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: ${({current}) => current ? 'none' : ''};
 `
 
-export const NewsTabDefault = styled.button`
+export const NewsTabDefault = styled(Link)`
   min-width: 98px;
   min-height: 31px;
   border-top-right-radius: 2px;

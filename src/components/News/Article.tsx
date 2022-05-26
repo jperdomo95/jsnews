@@ -34,21 +34,12 @@ const Article = ({ article }: Props) => {
     const wasLiked = !!likedArticles.find(({ objectID }) => objectID === article.objectID)
     if (wasLiked) {
       const removedLiked = likedArticles.filter(({ objectID }) => objectID !== article.objectID)
-      console.log(removedLiked)
       localStorage.setItem('likedNews',JSON.stringify(removedLiked))
     } else {
       likedArticles.push({...article, liked: true})
       localStorage.setItem('likedNews',JSON.stringify(likedArticles))
     }
     setLiked(!liked)
-    // if (hasFavorites) {
-    //   const favorites = JSON.parse(hasFavorites)
-    //   const favoriteExist = favorites.find((favorite: any) => article.objectID === favorite.objectID)
-    //   if (!favoriteExist)
-    //     localStorage.setItem('favorites', JSON.stringify([ ...favorites, article ]))
-    // } else {
-    //   localStorage.setItem('favorites', JSON.stringify(article))
-    // }
   }
 
   return (

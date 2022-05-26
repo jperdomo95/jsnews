@@ -43,7 +43,10 @@ export const useNews = () => {
         }).map((hit: HitInterface) => {
           const likedNews = JSON.parse(localStorage.getItem('likedNews') || '[]')
           const liked = !!likedNews.find(({ objectID }: HitInterface) => objectID === hit.objectID)
-          return {...hit, liked}
+          const story_title = hit.story_title.length > 60
+            ? `${hit.story_title.substring(0, 60)}...`
+            : hit.story_title
+          return {...hit, liked, story_title}
         })
       }
 
@@ -57,7 +60,6 @@ export const useNews = () => {
 
   useEffect(() => {
     const storedFilter = localStorage.getItem('dropdown') || query
-    console.log(storedFilter)
     setQuery(storedFilter)
     getNews()
   }, [])
