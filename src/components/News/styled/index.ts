@@ -52,6 +52,7 @@ export const DetailContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 6px;
+  margin: 0;
 `
 export const TitleText = styled.p`
   color: #6b6b6b;
@@ -60,6 +61,7 @@ export const TitleText = styled.p`
   letter-spacing: .25;
   font-weight: 500;
   overflow-wrap: anywhere;
+  margin: 0;
 `
 export const Image = styled.img`
   width: 24px;
@@ -73,6 +75,9 @@ export const NewsListNav = styled.nav`
   display: flex;
   justify-content: center;
   margin-bottom: 63px;
+  @media only screen and (max-width: 576px) {
+    margin-bottom: 38px;
+  }
 `
 interface NewsTabActiveProps {
   readonly current: string | boolean;

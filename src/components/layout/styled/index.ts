@@ -14,8 +14,8 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   z-index: 20;
-  @media only screen and (max-width: 576px) {
-    padding-left: 0;
+  @media only screen and (max-width: 992px) {
+    padding: 12px 0;
     display: flex;
     justify-content: center;
   }
@@ -25,6 +25,7 @@ export const StyledBody = styled.main`
   padding: 0 150px;
   @media only screen and (max-width: 992px) {
     padding: 0 20px;
+    margin-top: 90px;
   }
 `
 export const Image = styled.img`
