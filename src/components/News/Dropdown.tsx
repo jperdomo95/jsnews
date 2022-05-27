@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   DropdownContainer,
   DropdownText,
@@ -31,14 +31,14 @@ const Dropdown = ({ onChange, selected }: Props) => {
     image: ''
   })
 
-  const setItemFromLocalStorage = () => {
+  const setItemFromLocalStorage = useCallback(() => {
     const selectedQuery = dropdownItems.find(({ value }) => value === selected)
     setSelectedItem(selectedQuery || { label: 'Select your news', image: '' })
-  }
+  }, [selected])
 
   useEffect(() => {
     setItemFromLocalStorage()
-  }, [selected])
+  }, [setItemFromLocalStorage])
 
   return (
     <>
