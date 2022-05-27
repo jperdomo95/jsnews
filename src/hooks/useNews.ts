@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useCallback } from "react"
 import newsDB from "@api/newsDB"
 import { News as NewsInterface, Query, Hit as HitInterface } from '@interfaces/News';
 import { LoadingContext } from '../context/LoadingContext';
@@ -58,16 +58,18 @@ export const useNews = () => {
     }
   }
 
+  const getNewsCallback = useCallback(getNews, [showLoading, hideLoading])
+
   useEffect(() => {
     const storedFilter = localStorage.getItem('dropdown') || query
     setQuery(storedFilter)
-    getNews()
-  }, [])
+    getNewsCallback()
+  }, [getNewsCallback, query])
   
   return {
     news,
     isLoading,
-    getNews,
+    getNews: getNewsCallback,
     query,
     page
   }
