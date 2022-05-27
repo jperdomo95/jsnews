@@ -1,17 +1,17 @@
-import { Hit } from "@interfaces/News";
+import { Hit, News } from "@interfaces/News";
 
-export const filterNews = (news: any) => {
+export const filterNews = (news: News) => {
   return {
     ...news,
-    hits: news.hits.filter((hit: any) => {
+    hits: news.hits.filter(hit => {
       const { author, story_title, story_url, created_at } = hit
       return author && story_title && story_url && created_at
     })
   }
 }
 
-export const addLikedToNews = (news: any) => {
-  return news.hits.map((hit: any) => {
+export const addLikedToNews = (news: News) => {
+  return news.hits.map(hit => {
     const likedNews: Hit[] = localStorage ? JSON.parse(localStorage.getItem('likedNews') || '[]') : []
     const liked = !!likedNews.find(({ objectID }) => objectID === hit.objectID)
     const story_title = hit.story_title.length > 60
@@ -20,3 +20,12 @@ export const addLikedToNews = (news: any) => {
     return {...hit, liked, story_title}
   })
 }
+
+export const likeArticle = ((news: Hit[], article: Hit) => {
+  const wasLiked = !!news.find(({ objectID }) => objectID === article.objectID)
+  if (wasLiked) {
+    return news.filter(({ objectID }) => objectID !== article.objectID)
+  } else {
+    return [...news, {...article, liked: true}]
+  }
+})

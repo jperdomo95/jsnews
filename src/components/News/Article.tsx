@@ -14,6 +14,7 @@ import {
 import Likedheart from '@assets/likedheart.png'
 import Heart from '@assets/heart.png'
 import ClockIcon from '../icons/ClockIcon'
+import { likeArticle } from '@utils/manageLikes'
 
 interface Props {
   article: HitInterface;
@@ -31,15 +32,10 @@ const Article = ({ article }: Props) => {
 
   const handleLikeArticle = (e: any) => {
     e.stopPropagation();
-    const likedArticles: HitInterface[] = JSON.parse(localStorage.getItem('likedNews') || '[]')
-    const wasLiked = !!likedArticles.find(({ objectID }) => objectID === article.objectID)
-    if (wasLiked) {
-      const removedLiked = likedArticles.filter(({ objectID }) => objectID !== article.objectID)
-      localStorage.setItem('likedNews',JSON.stringify(removedLiked))
-    } else {
-      likedArticles.push({...article, liked: true})
-      localStorage.setItem('likedNews',JSON.stringify(likedArticles))
-    }
+    const likedArticles: HitInterface[] = JSON.parse(localStorage.getItem('likedNews') || '[]')    
+    const newLikedArticles = likeArticle(likedArticles, article)
+
+    localStorage.setItem('likedNews',JSON.stringify(newLikedArticles))
     setLiked(!liked)
   }
 
