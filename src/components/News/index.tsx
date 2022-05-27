@@ -6,7 +6,7 @@ import { ActionsContainer } from './styled'
 import { useNews } from "@hooks/useNews"
 
 const News = () => {
-  const { news, getNews, query, page } = useNews()
+  const { news, getNews, query } = useNews()
   const handleDropdown = (value: string) => {
     localStorage.setItem('dropdown', value)
     getNews(value)

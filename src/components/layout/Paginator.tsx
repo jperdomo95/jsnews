@@ -20,7 +20,7 @@ const Footer = ({ onPaginate, pagesNumber }: Props) => {
 
   const [pages, setPages] = useState<number[]>(paginatorItems)
 
-  const handleClick = (selectedPage: number, index: number) => {
+  const handleClick = (selectedPage: number) => {
     const midleIndex = Math.trunc(pages.length / 2)
     const sumToItems = selectedPage - pages[midleIndex]
 
@@ -46,7 +46,7 @@ const Footer = ({ onPaginate, pagesNumber }: Props) => {
   return (
     <PaginatorContainer>
       {pages.map((page, i: number) => (
-        <PaginatorItem isActive={i === activeIndex} key={i} onClick={() => handleClick(page, i)}>
+        <PaginatorItem isActive={i === activeIndex} key={i} onClick={() => handleClick(page)}>
           {page}
         </PaginatorItem>
       ))}
