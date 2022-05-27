@@ -7,11 +7,11 @@ export const Section = styled.section`
   grid-gap: 30px 40px;
   margin-bottom: 96px;
   @media only screen and (max-width: 576px) {
-    grid-template-columns: 1fr;
     grid-row-gap: 10px;
     margin-bottom: 38px;
   }
   @media only screen and (max-width: 762px) {
+    grid-template-columns: 1fr;
     grid-gap: 10px 10px;
   }
 `
