@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useCallback } from "react"
 import newsDB from "@api/newsDB"
-import { News as NewsInterface, Query, Hit as HitInterface } from '@interfaces/News';
+import { News as NewsInterface, Query } from '@interfaces/News';
 import { LoadingContext } from '../context/LoadingContext';
 import { filterNews, addLikedToNews } from "../utils/manageLikes";
 

@@ -1,4 +1,4 @@
-import { Hit, News } from "@interfaces/News";
+import { Hit } from "@interfaces/News";
 
 export const filterNews = (news: any) => {
   return {
