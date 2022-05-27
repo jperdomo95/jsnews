@@ -8,7 +8,11 @@ export interface LoadingContextProps {
 
 export const LoadingContext = createContext( {} as LoadingContextProps )
 
-export const LoadingProvider = ({ children }: any ) => {
+interface LoadingProviderProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export const LoadingProvider = ({ children }: LoadingProviderProps ) => {
   const [isLoading, setIsLoading] = useState(false)
   
   const showLoading = useCallback(() => {

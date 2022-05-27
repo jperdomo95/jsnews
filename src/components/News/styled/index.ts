@@ -30,6 +30,9 @@ export const Article = styled.article`
   &:hover{
     opacity: 1;
   }
+  @media only screen and (max-width: 762px) {
+    height: 97px;
+  }
 `
 export const ArticleDetail = styled.div`
   background: #fff;
