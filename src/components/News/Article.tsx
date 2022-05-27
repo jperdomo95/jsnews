@@ -1,3 +1,5 @@
+
+import { useState } from 'react'
 import moment from 'moment'
 import { Hit as HitInterface } from "@interfaces/News"
 import {
@@ -12,7 +14,6 @@ import {
 import Likedheart from '@assets/likedheart.png'
 import Heart from '@assets/heart.png'
 import ClockIcon from '../icons/ClockIcon'
-import { useState } from 'react'
 
 interface Props {
   article: HitInterface;

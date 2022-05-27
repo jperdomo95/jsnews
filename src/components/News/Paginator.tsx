@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { PaginatorContainer, PaginatorItem } from './styled'
-import { useScreenSize } from '../../hooks/useScreenSize';
+import { PaginatorContainer, PaginatorItem } from '@components/layout/styled'
+import { useScreenSize } from '@hooks/useScreenSize';
 
 interface Props {
   pagesNumber: number;

@@ -1,5 +1,5 @@
 import { Hit as HitInterface } from '@interfaces/News'
-import { Section } from './styled'
+import { Section, EmptyNewsMessage } from './styled'
 import Article from './Article'
 
 interface Props {
@@ -8,6 +8,12 @@ interface Props {
 
 const NewsList = ({ news }: Props) => {
   
+  if (!news.length) {
+    return (
+      <EmptyNewsMessage>There are no posts available...</EmptyNewsMessage>
+    )
+  }
+
   return (
     <Section>
       {news.map((article: HitInterface, i: number) => (

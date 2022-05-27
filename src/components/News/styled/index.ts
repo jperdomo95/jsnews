@@ -103,7 +103,6 @@ export const NewsTab = styled(Link)<NewsTabActiveProps>`
   justify-content: center;
   pointer-events: ${({current}) => current ? 'none' : ''};
 `
-
 export const NewsTabDefault = styled(Link)`
   min-width: 98px;
   min-height: 31px;
@@ -181,4 +180,8 @@ export const ActionsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 38px;
+`
+export const EmptyNewsMessage = styled.p`
+  text-align: center;
+  color: tomato;
 `

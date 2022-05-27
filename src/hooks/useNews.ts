@@ -2,6 +2,7 @@ import { useContext, useEffect, useState, useCallback } from "react"
 import newsDB from "@api/newsDB"
 import { News as NewsInterface, Query, Hit as HitInterface } from '@interfaces/News';
 import { LoadingContext } from '../context/LoadingContext';
+import { filterNews, addLikedToNews } from "../utils/manageLikes";
 
 export const useNews = () => {
   
@@ -35,22 +36,10 @@ export const useNews = () => {
         },
       })
 
-      const filteredNewsResponse = {
-        ...newsResponse.data,
-        hits: newsResponse.data.hits.filter((hit: HitInterface) => {
-          const { author, story_title, story_url, created_at } = hit
-          return author && story_title && story_url && created_at
-        }).map((hit: HitInterface) => {
-          const likedNews = JSON.parse(localStorage.getItem('likedNews') || '[]')
-          const liked = !!likedNews.find(({ objectID }: HitInterface) => objectID === hit.objectID)
-          const story_title = hit.story_title.length > 60
-            ? `${hit.story_title.substring(0, 60)}...`
-            : hit.story_title
-          return {...hit, liked, story_title}
-        })
-      }
+      const filteredNewsResponse = filterNews(newsResponse.data)
+      const likedFilteredNewsResponse = addLikedToNews(filteredNewsResponse)
 
-      setNews(filteredNewsResponse);
+      setNews({...filteredNewsResponse, hits: likedFilteredNewsResponse});
       hideLoading()
     } catch (error) {
       hideLoading()

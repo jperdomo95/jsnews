@@ -1,7 +1,7 @@
 import NewsList from "./NewsList"
 import Nav from './Nav'
 import Dropdown from "./Dropdown"
-import Paginator from '@components/layout/Paginator'
+import Paginator from '@components/News/Paginator'
 import { ActionsContainer } from './styled'
 import { useNews } from "@hooks/useNews"
 
