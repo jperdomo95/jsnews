@@ -137,6 +137,8 @@ export const DropdownList = styled.ul`
   box-shadow: 0 2px 2px 0 #dad8d8;
   background-color: #ffffff;
   width: 100%;
+  padding: 0;
+  margin: 0;
 `
 export const DropdownListItem = styled.li`
   display: flex;
