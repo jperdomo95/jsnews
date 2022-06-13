@@ -1,16 +1,13 @@
 import { useContext } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Loading from './Loading'
 import { StyledBody, LoadingSpinner, } from './styled'
 import { LoadingContext } from '../../context/LoadingContext';
 import { Theme } from '../../Theme';
-interface Props {
-  children: JSX.Element | JSX.Element[];
-}
 
-
-const Layout = ({ children }: Props) => {
+const Layout = () => {
   const { isLoading } = useContext(LoadingContext)
 
   return (
@@ -18,7 +15,7 @@ const Layout = ({ children }: Props) => {
       <Header />
       <Loading open={isLoading}><LoadingSpinner /></Loading>
       <StyledBody>
-        {children}
+        <Outlet />
       </StyledBody>
     </ThemeProvider>
   )

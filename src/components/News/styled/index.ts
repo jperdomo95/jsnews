@@ -85,7 +85,7 @@ export const NewsListNav = styled.nav`
 interface NewsTabActiveProps {
   readonly current: string | boolean;
 }
-export const NewsTab = styled(Link)<NewsTabActiveProps>`
+export const NewsTab = styled.div<NewsTabActiveProps>`
   min-width: 98px;
   min-height: 31px;
   border-top-left-radius: 2px;

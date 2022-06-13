@@ -9,12 +9,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <LoadingProvider>
-        <Layout>
           <Routes>
-            <Route path="/" element={<News />} />
-            <Route path="favorites" element={<Favorites />} />
-            </Routes>
-          </Layout>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<News />} />
+              <Route path="favorites" element={<Favorites />} />
+            </Route>
+          </Routes>
       </LoadingProvider>
     </BrowserRouter>
   );
